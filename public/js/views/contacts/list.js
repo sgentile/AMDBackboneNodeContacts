@@ -2,40 +2,33 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'collections/contacts',
-  'text!templates/contacts/list.html'
-], function($, _, Backbone, contactsCollection, contactsListTemplate){
+  'views/contacts/item',
+  'collections/contacts'
+], function($, _, Backbone, ContactView, contactsCollection){
 	var ContactsListView = Backbone.View.extend({
 		el: "#contactsRegion",
 		
 		initialize: function(){
-			this.collection = contactsCollection;
+      		this.collection = contactsCollection;
+      		
+      		this.collection.bind('reset', this.addAll, this);
+			this.collection.bind('add', this.addOne, this);
+			this.collection.bind('all', this.render, this);
+			
 			this.collection = contactsCollection.add({firstname: 'Steve', lastname: 'Gentile'}); //create one
-			this.collection.bind('add', this.addContact);
-			//this.collection = contactsCollection.add({firstname: 'Steve', lastname: 'Gentile'}); //create one
+			this.collection = contactsCollection.add({firstname: 'Jake', lastname: 'Gentile'}); //create one
 		},
 		
-		addContact: function(model){
-			
-			//todo: fix this!
-			
-			var data = {
-				contacts : this.models,
-				_: _ 
-			};
-			
-			var compiledTemplate = _.template(contactsListTemplate, data);
-			$("#contactsRegion").html( compiledTemplate );
+		addAll: function(){
+			this.collection.each(this.addContact);
+		},
+		addOne: function(contact){
+			var view = new ContactView({model:contact});
+			$("#contacts-list").append(view.render().el);
 		},
 		
 		render: function(){
-			var data = {
-				contacts : this.collection.models,
-				_: _ 
-			};
 			
-			var compiledTemplate = _.template(contactsListTemplate, data);
-			$("#contactsRegion").html( compiledTemplate );
 		}
 	});
 	

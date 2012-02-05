@@ -13,7 +13,7 @@ define([
 		
 		defaultAction : function(actions){
 			mainHomeView.render();
-			contactsListView.render();
+			
 		},
 		
 		showContacts : function(){
