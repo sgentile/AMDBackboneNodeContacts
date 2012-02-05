@@ -1,0 +1,23 @@
+{
+  "author": "Steve Gentile",
+  "name": "BackboneNodeContacts",
+  "description": "This sample app demos Backbone.Marionette, ModelBinding, and some other fun stuff.  npm start get's you going",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sgentile/BackboneNodeContacts.git"
+  },
+  "scripts": {
+			"start": "node app.js"
+	},
+  "engines": {
+    "node": "~0.6.6",
+  },
+  "dependencies": {
+    "express" : "2.5.2",
+    "jshtml" : "0.2.2",
+    "node-uuid" : "1.3.1",
+    "underscore" : "1.2.3"
+  },
+  "devDependencies": {}
+}
