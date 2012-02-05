@@ -1,23 +1,20 @@
 {
   "author": "Steve Gentile",
   "name": "AMDBackboneNodeContacts",
-  "description": "Sample app using Backbone, RequireJS, NodeJs"
+  "description": "Sample app using Backbone, RequireJS, NodeJs",
   "version": "0.0.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/sgentile/AMDBackboneNodeContacts.git"
   },
   "scripts": {
-			"start": "node app.js"
+			"start": "node server.js"
 	},
-  "engines": {
-    "node": "~0.6.7",
-  },
+	
   "dependencies": {
     "express" : "2.5.2",
     "node-uuid" : "1.3.1",
     "underscore" : "1.2.3"
   },
-  "devDependencies": {}
+  "engine": "node >= 0.6.0"
 }
-
