@@ -3,6 +3,8 @@ define([
   'backbone'
 ], function(_, Backbone){
 	var ContactModel = new Backbone.Model.extend({
+		url 	: 'Contact',
+		
 		defaults:{
 			id			: null,
 			firstname	: "",

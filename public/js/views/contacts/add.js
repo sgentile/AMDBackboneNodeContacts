@@ -2,7 +2,6 @@ define([
 	'jquery', 
   	'underscore', 
   	'backbone',
-  	//'models/contact',
   	'collections/contacts',
   	'text!templates/contacts/add.html'
 	], function($, _, Backbone, contactCollection, addContactTemplate){
@@ -26,7 +25,15 @@ define([
 				firstname: 	$("#firstname").val(),
 				lastname: 	$("#lastname").val()
 			}
-			contactCollection.add(contact);
+			contactCollection.create(contact, {
+					success: function(model, response){
+						alert('added');
+					},
+					error : function(){
+						alert('error adding');
+					}
+				});
+			//contactCollection.create(contact);
 			return false;
 		}
 	});

@@ -15,12 +15,13 @@ define([
 			this.collection.bind('add', this.addOne, this);
 			this.collection.bind('all', this.render, this);
 			
-			this.collection = contactsCollection.add({firstname: 'Steve', lastname: 'Gentile'}); //create one
-			this.collection = contactsCollection.add({firstname: 'Jake', lastname: 'Gentile'}); //create one
+			//get from server:
+			this.collection.fetch();
+			//this.collection = contactsCollection.add({firstname: 'Steve', lastname: 'Gentile'}); //create one			
 		},
 		
 		addAll: function(){
-			this.collection.each(this.addContact);
+			this.collection.each(this.addOne);
 		},
 		addOne: function(contact){
 			var view = new ContactView({model:contact});
